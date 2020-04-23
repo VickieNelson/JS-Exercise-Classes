@@ -41,12 +41,13 @@ class Airplane {
 */
 //class of person starts
 class Person {
+  //open Person class
   constructor(name, age) {
-    //constructor opens establish name, age, locale and gener
+    //initialies name, age, stomach empty array
     this.name = name;
     this.age = age;
     this.stomach = []; //inititalizes empty stomach array
-  } // closes class Person
+  } // closes constructor
 
   //methods
 
@@ -64,7 +65,7 @@ class Person {
 
   toString() {
     return `${this.name}, ${this.age}`;
-  }
+  } //this closes toString method
 } // closes Person class
 
 //objects for Person class
@@ -88,7 +89,6 @@ console.log(p1.name + p1.age);
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-
 class Car {
   constructor(model, mpg) {
     this.model = model;
@@ -205,7 +205,7 @@ class Student extends Lambdasian {
     super(attr);
 
     //initializing NEW attr
-    this.prevBackbround = attr.prevBackbround;
+    this.previousBackground = attr.previousBackground;
     this.className = attr.className;
     this.favSubjects = attr.favSubjects;
   }
@@ -225,10 +225,6 @@ class Student extends Lambdasian {
   }
 }
 
-// name: "Sebastian",
-// location: "USA",
-// age: 27,
-
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -242,7 +238,24 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {}
+class ProjectManager extends Instructor {
+  //this extends Instructor class
+
+  constructor(attr) {
+    super(attr); //this bring in the exisiting attr from Instructor class
+    //initiallizing NEW attr
+    this.gradClassName = attr.gradClassName;
+    this.favInstructor = attr.favInstructor;
+  }
+  //start new methods
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, at ${channel} standy times!`;
+  }
+
+  debugsCode(student, subj) {
+    return `${this.name} debugs ${student.name}'s code on ${subj}`;
+  }
+}
 
 /*
   STRETCH PROBLEM (no tests!)
