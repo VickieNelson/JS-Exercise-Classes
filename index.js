@@ -39,10 +39,41 @@ class Airplane {
     - Give instances of Person a method `.toString()`:
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
-
+//class of person starts
 class Person {
+  constructor(name, age) {
+    //constructor opens establish name, age, locale and gener
+    this.name = name;
+    this.age = age;
+    this.stomach = []; //inititalizes empty stomach array
+  } // closes class Person
 
-}
+  //methods
+
+  eat(someFood) {
+    //passed in someFood as a param to the eat function so that we can push someFood into this.stomach
+
+    if (this.stomach.length < 10) {
+      this.stomach.push(someFood);
+    } //closes if
+  } //closes eat
+
+  poop() {
+    this.stomach = [];
+  } // closes poop method
+
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
+} // closes Person class
+
+//objects for Person class
+const p1 = new Person({
+  name: "Vickie",
+  age: 46,
+});
+
+console.log(p1.name + p1.age);
 
 /*
   TASK 2
@@ -59,8 +90,35 @@ class Person {
 */
 
 class Car {
+  constructor(model, mpg) {
+    this.model = model;
+    this.milesPerGallon = mpg;
+    this.tank = 0;
+    this.odometer = 0;
+  } // this closes constuctor
 
-}
+  fill(gallons) {
+    this.tank = this.tank + gallons;
+  }
+  drive(dist) {
+    const drivableMiles = this.tank * this.milesPerGallon;
+    if (dist <= drivableMiles) {
+      this.odometer = this.odometer + dist;
+      this.tank = this.tank - dist / this.milesPerGallon;
+    } else {
+      this.odometer = this.odometer + drivableMiles;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
+} //this closes Car class
+
+const car1 = new Car({
+  model: "Totyota",
+  mpg: 32,
+});
+
+console.log(car1.model + car1.milesPerGallon);
 
 /*
   TASK 3
@@ -75,26 +133,31 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
+  constructor(name, age, location) {
+    this.name = name;
+    this.age = age;
+    this.location = location;
+  } //closes constructor
 
+  //create method called speak()
 }
 
-/*
-  TASK 4
-    - Write an Instructor class extending Lambdasian.
-    - Its constructor takes a single argument - an object with the following keys:
-        + All the keys used to initialize instances of Lambdasian.
-        + `specialty`: what the instance of Instructor is good at, i.e. 'redux'
-        + `favLanguage`: i.e. 'JavaScript, Python, Elm etc.'
-        + `catchPhrase`: i.e. `Don't forget the homies`.
-    - The constructor calls the parent constructor passing it what it needs.
-    - The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
-    - Instructor instances have the following methods:
-        + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
-        + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
-*/
-class Instructor {
+// TASK 4
+//   - Write an Instructor class extending Lambdasian.
+//   - Its constructor takes a single argument - an object with the following keys:
+//       + All the keys used to initialize instances of Lambdasian.
+//       + `specialty`: what the instance of Instructor is good at, i.e. 'redux'
+//       + `favLanguage`: i.e. 'JavaScript, Python, Elm etc.'
+//       + `catchPhrase`: i.e. `Don't forget the homies`.
+//     - The constructor calls the parent constructor passing it what it needs.
+//     - The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
+//     - Instructor instances have the following methods:
+//         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
+//         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 
-}
+// */
+
+class Instructor {}
 
 /*
   TASK 5
@@ -111,9 +174,7 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
-}
+class Student {}
 
 /*
   TASK 6
@@ -128,9 +189,7 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
-}
+class ProjectManager {}
 
 /*
   STRETCH PROBLEM (no tests!)
@@ -144,13 +203,27 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
-if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+if (typeof exports !== "undefined") {
+  module.exports = module.exports || {};
+  if (Airplane) {
+    module.exports.Airplane = Airplane;
+  }
+  if (Person) {
+    module.exports.Person = Person;
+  }
+  if (Car) {
+    module.exports.Car = Car;
+  }
+  if (Lambdasian) {
+    module.exports.Lambdasian = Lambdasian;
+  }
+  if (Instructor) {
+    module.exports.Instructor = Instructor;
+  }
+  if (Student) {
+    module.exports.Student = Student;
+  }
+  if (ProjectManager) {
+    module.exports.ProjectManager = ProjectManager;
+  }
 }
