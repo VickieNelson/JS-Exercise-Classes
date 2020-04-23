@@ -114,7 +114,7 @@ class Car {
 } //this closes Car class
 
 const car1 = new Car({
-  model: "Totyota",
+  model: "Toyota",
   mpg: 32,
 });
 
@@ -133,14 +133,24 @@ console.log(car1.model + car1.milesPerGallon);
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor(name, age, location) {
-    this.name = name;
-    this.age = age;
-    this.location = location;
+  constructor(attrs) {
+    this.name = attrs.name;
+    this.age = attrs.age;
+    this.location = attrs.location;
   } //closes constructor
 
   //create method called speak()
-}
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  } //this closes speak
+} //this closes Lambasian
+
+const lambdasian1 = new Lambdasian({
+  name: "Sebastian",
+  location: "USA",
+  age: 27,
+});
+console.log(lambdasian1.name + lambdasian1.age + lambdasian1.location);
 
 // TASK 4
 //   - Write an Instructor class extending Lambdasian.
@@ -157,7 +167,22 @@ class Lambdasian {
 
 // */
 
-class Instructor {}
+class Instructor extends Lambdasian {
+  constructor(attr) {
+    super(attr); //add super 'the speacial sauce to mame the extend work
+    this.specialty = attr.specialty; // passing in new attrs
+    this.favLanguage = attr.favLanguage;
+    this.catchPhrase = attr.catchPhrase;
+  }
+
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  } //closes demo method
+
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+}
 
 /*
   TASK 5
@@ -174,7 +199,35 @@ class Instructor {}
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {}
+class Student extends Lambdasian {
+  constructor(attr) {
+    //passes in parent attr
+    super(attr);
+
+    //initializing NEW attr
+    this.prevBackbround = attr.prevBackbround;
+    this.className = attr.className;
+    this.favSubjects = attr.favSubjects;
+  }
+
+  //create NEW methods for Student class
+
+  listSubjects() {
+    return `Loving ${this.favSubjects}`;
+  }
+
+  PRAssignment(subj) {
+    return `${this.name} has submitted a PR for ${subj}`;
+  }
+
+  sprintChallenge(subj) {
+    return `${this.name} has begun sprint challenge on ${subj}`;
+  }
+}
+
+// name: "Sebastian",
+// location: "USA",
+// age: 27,
 
 /*
   TASK 6
